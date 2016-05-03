@@ -222,16 +222,21 @@ namespace Marketing.Web
 
                 #region Calcular la Edad del Cliente
 
-                string validarFormatoEdad = this.txtEdad.Text.Trim();
+                string formatoEdad = this.txtEdad.Text.Trim();
 
-                if (validarFormatoEdad.Contains('-'))
+                // Validar el formato de la fecha de nacimiento del Cliente Potencial
+                if (formatoEdad.Contains('-'))
                 {
-                    int calculoEdad = CalcularEdadCliente(Convert.ToDateTime(this.txtEdad.Text.Trim()));
+                    DateTime edadActual = Convert.ToDateTime(formatoEdad);
+
+                    // Edad Calculada
+                    int calculoEdad = CalcularEdadCliente(edadActual);
                     cliente.Edad = calculoEdad; // Edad Calculada
                     this.txtEdad.Text = calculoEdad.ToString();
                 }
                 else
                 {
+                    // Edad actual sin cambios
                     cliente.Edad = int.Parse(this.txtEdad.Text.Trim());
                 }
 

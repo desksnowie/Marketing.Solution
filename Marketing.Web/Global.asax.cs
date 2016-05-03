@@ -19,6 +19,10 @@ namespace Marketing.Web
         {
             // Variable de Sesión para gestionar las acciones de Búsqueda
             Session.Add("accionBuscar", string.Empty);
+            Session.Add("TituloPagina", string.Empty);
+            Session.Add("AccionPagina", string.Empty);
+            Session.Add("DatosCliente", string.Empty);
+            Session.Add("dt", string.Empty);
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
