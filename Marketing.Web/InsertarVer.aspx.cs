@@ -222,12 +222,19 @@ namespace Marketing.Web
 
                 #region Calcular la Edad del Cliente
 
+                string diaEdad, mesEdad, anioEdad = string.Empty;
+                string[] arrayFDN = new string[3];
                 string formatoEdad = this.txtEdad.Text.Trim();
 
                 // Validar el formato de la fecha de nacimiento del Cliente Potencial
                 if (formatoEdad.Contains('-'))
                 {
-                    DateTime edadActual = Convert.ToDateTime(formatoEdad);
+                    arrayFDN = formatoEdad.Split('-');
+                    diaEdad = arrayFDN[0].ToString();
+                    mesEdad = arrayFDN[1].ToString();
+                    anioEdad = arrayFDN[2].ToString();
+
+                    DateTime edadActual = new DateTime(int.Parse(anioEdad), int.Parse(mesEdad), int.Parse(diaEdad));
 
                     // Edad Calculada
                     int calculoEdad = CalcularEdadCliente(edadActual);
